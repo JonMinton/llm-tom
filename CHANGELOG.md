@@ -61,6 +61,26 @@ This correction was triggered by an external chat-instance review, not by self-r
 
 Added `.gitattributes` with `references.bib linguist-detectable=false` so the GitHub language bar reflects actual project content (markdown / Python) rather than reading "TeX 100%" off a single BibTeX file. Cosmetic only; does not affect repo behaviour.
 
+## 2026-05-02 — P4: discussion-section replies replaced with substantive arguments
+
+`paper/outline.md` § 9 had three slogan-thin replies to anticipated reviewer objections. The review (`REVIEW.md`) flagged this as the second-highest-leverage substantive issue after P1. Replaced each slogan with a substantive paragraph or two. Specifically:
+
+- **"B1 and B2 are still behaviourally indistinguishable in real deployments"** — reply distinguishes diagnostic from deployment-monitor status, and argues the distinction generates engineering-relevant downstream predictions (different failure-mode shapes to monitor for) without being itself an engineering tool.
+- **"Linear-probe success is just feature presence, not computation"** — reply specifies each lens's individual failure mode (probe-detects-feature-presence-only; ID-can-be-norm-artefact; patching-cannot-distinguish-primitive-from-lookup; PH-sample-noise), argues these failure modes are mutually independent, and concludes the convergence requirement is informative because joint structured alignment of four independent failure modes is sharply less likely than any individual failure. Where lenses fail to converge, that itself is diagnostic.
+- **"Topological methods are noisy on small samples"** — reply notes topology is corroborative not load-bearing, points to bootstrap resampling and pre-committed thresholds in the analysis plan, and flags an explicit open call: if pilot results show topology lens unstable at planned N, drop it from primary analysis rather than inflate claims.
+
+Substantive material now in place for paper drafting; the replies are not the final voice but the argument structure is committed and locatable.
+
+Per Jon's note on this work: he is positioned as facilitator for the design becoming a public artefact rather than as PI driving the agenda. The pattern across reasoning-LLM responses to this task family is itself a noted observation, not material for the paper.
+
+## 2026-05-02 — P3 scaffolding: standardised cross-bot prompt for B1/B2 operationalisation
+
+Drafted the canonical prompt at `prereg/notes/p3-cross-bot-prompt.md` for parallel independent review of the B1/B2 operationalisation across multiple bot families (recommended: Claude Opus 4.7, current-flagship Gemini, current-flagship general-purpose OpenAI model — *not* Codex; rationale: P3 is operationalisation-derivation work, not coding, so coding-specialised products are the wrong fit).
+
+Drop-in stub files for each bot's response. README documents dispatch protocol and synthesis convention (quote verbatim, do not paraphrase).
+
+Compute-free; awaiting Jon's review of the prompt before dispatch. Synthesis output will be promoted into `prereg/prereg.md` § "Recursive OOD probe" once available.
+
 ## 2026-05-02 — P2 resolved: recursive OOD probe is prereg-only
 
 **Decision.** The recursive OOD probe is *not* an in-paper experiment and *not* a companion paper. The position paper specifies the probe in detail in the prereg as a planned analysis, argues for the research programme that includes it, and does not claim to have executed it. The prereg is the canonical executable contract.
