@@ -51,13 +51,18 @@ Three conditions × matched-pair structure (false-belief / true-belief, or domai
 
 ### Recursive OOD probe
 
-The B1/B2 discriminator. Operationalisation must be locked here. Placeholder:
+**This section is the canonical executable contract for the B1/B2 discriminator.** The position paper points here for operational details rather than duplicating them; that decision is logged in `CHANGELOG.md` 2026-05-02 (P2 resolution). Locking this section is therefore a precondition for the prereg being submittable and for the position paper being shippable as designed.
 
-- Identify the candidate shared circuit from causal patching results across the three primary conditions.
-- Apply patching of that circuit to a fourth-condition stimulus set designed to push beyond the trained-primitive boundary.
-- Pre-commit signature thresholds for "primitive" vs "interpolator" behaviour.
+Required operationalisations (currently placeholder; P3 work):
 
-This is the most attackable part of the design; finalise the operationalisation before submission.
+- **Candidate shared circuit identification.** Procedure: rank components by patching effect on the three primary conditions (psychological / technical / novel); take the intersection of components above a pre-committed threshold across all three.
+- **Recursive probe stimuli.** A fourth-condition stimulus set designed to push beyond the trained-primitive boundary along a specified independent axis (compositional depth / distance from training distribution / substrate distance — exact axis to be locked).
+- **Dependent measure.** Patching-effect magnitude on next-token logit AND behavioural accuracy. Both reported; primary inference uses [TBD: which, or composite].
+- **Primitive signature.** Pre-committed quantitative form: e.g. patching-effect retains ≥X% of in-distribution magnitude across [axis], with confidence interval excluding the interpolator null. Exact thresholds and CI bounds: P3 work.
+- **Interpolator signature.** Pre-committed quantitative form: e.g. patching-effect decays smoothly with [axis], slope ≥Y, R² ≥Z. Exact thresholds and CI bounds: P3 work.
+- **Decision rule.** If neither signature is supported within CI, the experiment is *informative-but-inconclusive* — report as such, do not force a B1/B2 verdict.
+
+This is the most attackable part of the design and the most consequential placeholder in the project. Until P3 is closed, the prereg is not submittable.
 
 ### Models
 

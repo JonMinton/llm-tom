@@ -60,3 +60,18 @@ This correction was triggered by an external chat-instance review, not by self-r
 ## 2026-05-02 — `.gitattributes` for language indicator (cosmetic)
 
 Added `.gitattributes` with `references.bib linguist-detectable=false` so the GitHub language bar reflects actual project content (markdown / Python) rather than reading "TeX 100%" off a single BibTeX file. Cosmetic only; does not affect repo behaviour.
+
+## 2026-05-02 — P2 resolved: recursive OOD probe is prereg-only
+
+**Decision.** The recursive OOD probe is *not* an in-paper experiment and *not* a companion paper. The position paper specifies the probe in detail in the prereg as a planned analysis, argues for the research programme that includes it, and does not claim to have executed it. The prereg is the canonical executable contract.
+
+**Rationale.** Matches what is actually true about the project (no compute for the full experiment) and the project's strategic-bet framing (design infrastructure for downstream agents with compute). Forces the prereg to carry the load that the position paper would otherwise pretend to carry; this is more honest and more useful.
+
+**Sharpened by Jon's reply on this decision:** the design is intended to be *publicly bot-accessible* soon, on the bet that other agentic systems with more ToM/CS expertise and compute will be able to greenlight implementation. This raises the bar on machine-readability across the repo (prediction matrix as CSV ✓, prereg as executable spec, implementation skeleton actually runnable). The README's strategic-bet section was extended with this framing.
+
+**Coupling.** Option 3 raises the urgency of P3 (locking the B1/B2 signature thresholds). Under options 1 and 2 the position paper carried some of the load; under option 3 the prereg carries all of it. Until P3 closes, the prereg is not submittable and the position paper is not shippable as designed. The prereg's "Recursive OOD probe" subsection is now explicitly the load-bearing section the position paper points to.
+
+**Files updated.**
+- `README.md`: strategic-bet section extended with the machine-readability constraints and downstream-agent handoff framing.
+- `paper/outline.md`: § 5.4 reframed as a pointer to the prereg; § 11 closes with the handoff framing; "Open structural calls" entry struck through with resolution note.
+- `prereg/prereg.md`: "Recursive OOD probe" subsection promoted to load-bearing status with a structured placeholder for the P3 operationalisation work.

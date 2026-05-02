@@ -46,7 +46,7 @@ For each: what the lens measures, what its known limits are, why it's not redund
 5.1 Psychological — Sally-Anne false-belief / true-belief, matched on syntax / character count / event structure.
 5.2 Technical — State-Rollback isomorphism. Argue mathematical equivalence to false-belief.
 5.3 Combinatorially novel — substrate-composition novelty. Defend why CA-as-belief-systems (or whatever final form) is OOD-in-the-right-way and not surface weirdness. **This section is the most attackable; treat it accordingly.**
-5.4 Recursive OOD probe — what's tested, what counts as the primitive vs interpolator signature. **Equally attackable; do not handwave.**
+5.4 Recursive OOD probe — specifies the B1/B2 discriminator. The position paper presents the probe as a planned analysis pre-registered for downstream execution; it **does not claim to have run the probe**. Operational thresholds and falsification rules live in `prereg/prereg.md` § "Recursive OOD probe". The position paper's argument here is methodological: *this* is the right discriminator to specify, and *this* is what its locked-in form looks like in the prereg. Decision rationale: option 3 from CHANGELOG 2026-05-02 (P2 resolution) — design infrastructure framing requires the prereg to be the executable contract.
 
 ## 6. Frequency analysis
 
@@ -87,10 +87,12 @@ Address the obvious objections:
 
 Restate the methodological contribution; identify the next experiments (alternative novel-stimulus families; cross-model comparison; scaling the recursive probe).
 
+Close with the handoff framing: this paper specifies a research programme; the prereg is the executable contract; the implementation template is the working pipeline. Downstream researchers — human or agentic — with appropriate compute are the intended executors. Cite the repository and DOI explicitly so the handoff is locatable.
+
 ---
 
 ## Open structural calls
 
-- Whether the recursive OOD probe is in-paper or a companion paper (currently in-paper).
+- ~~Whether the recursive OOD probe is in-paper or a companion paper.~~ **Resolved 2026-05-02 (P2): option 3 — prereg-only, position paper argues for the programme.** See CHANGELOG.
 - Whether to include a worked pilot result on Pythia-160M as an in-paper figure or only as a code template.
 - Workshop vs full TMLR submission. Workshop forces brevity, may help discipline the exposition.

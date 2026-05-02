@@ -15,7 +15,16 @@ A research-design project: methodology for adjudicating Level-2 algorithmic equi
 
 ## Strategic bet
 
-As agentic AI capability increases over coming weeks and months, well-specified experimental designs become disproportionately valuable infrastructure. The contribution here is a rigorously specified design that a downstream researcher (human or agentic) can pick up and execute, not a finished experimental result.
+As agentic AI capability increases over coming weeks and months, well-specified experimental designs become disproportionately valuable infrastructure. The contribution here is a rigorously specified design that a downstream researcher — human or agentic — can pick up and execute, not a finished experimental result.
+
+This makes machine-readability a load-bearing design constraint, not a stylistic preference:
+
+- The prediction matrix lives as CSV, not as a prose table buried in the paper.
+- The pre-registration is the **canonical executable spec** for the experiment; the position paper argues for *why this spec* without duplicating it.
+- Falsification rules and operational thresholds in the prereg are intended to be precise enough that an agent with compute can convert them into running code without further design choices.
+- The implementation template is intended to *run end-to-end* on a small model, demonstrating that the pipeline is real rather than gestural.
+
+A downstream agent picking up this repo should treat `prereg/prereg.md` as the contract, `paper/paper.md` (when drafted) as the argument, and `implementation/` as the working pipeline.
 
 ## How this project came to exist
 
