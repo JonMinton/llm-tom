@@ -9,10 +9,11 @@ Three-way comparison structure. Each subdirectory holds the variants for one con
 
 ```
 stimuli/
-├── README.md            # this file
-├── psychological/       # Sally-Anne variants
-├── technical/           # State-Rollback variants
-└── novel/               # Combinatorially novel stimuli (form not yet finalised)
+├── README.md             # this file
+├── psychological/        # Sally-Anne variants
+├── technical/            # State-Rollback variants
+├── novel/                # Combinatorially novel stimuli (form not yet finalised)
+└── twenty-questions/     # 20Q-derived validation bridge (see twenty-questions/spec.md)
 ```
 
 ## Design principles
@@ -30,6 +31,12 @@ Classical false-belief / true-belief Sally-Anne narratives. See `psychological/s
 System snapshot at T1, hidden migration at T2, recovery protocol at T3 must determine which server to query. Mathematically isomorphic to false-belief but in non-psychological domain.
 
 The case for "in-distribution" here: distributed-systems texts, devops post-mortems, and database-recovery documentation are well-represented in training corpora. The frequency analysis (`analysis/frequency_analysis/`) is the empirical check on this case.
+
+## Validation bridge — 20 Questions
+
+A single-turn input combining a stance framing, a 4–6-turn transcript, and a probe question. Three stance variants (collaborative / strictly correctness-oriented / adversarial-within-rules) test whether the model's prediction of the answerer's response is sensitive to the answerer's utility function in the theoretically expected direction. **Not part of the primary three-condition matrix** that adjudicates A/B/C; run alongside as a construct-validity check that the candidate primitive identified via the primary conditions also engages on the motivating phenomenon. See `twenty-questions/spec.md` for full specification.
+
+If the cross-bot review (P3) selects "pragmatic-stance distance" as the recursive-probe independent axis, 20Q is promoted from validation-only to a primary test bed for B1/B2 discrimination.
 
 ## Condition 3 — Combinatorially novel
 

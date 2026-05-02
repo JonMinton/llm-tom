@@ -10,9 +10,25 @@ This is a section-and-claims scaffold derived from the handover. Each section is
 
 ## 1. Introduction
 
-**Claim.** "Do LLMs have Theory of Mind?" is an underdetermined question that conflates levels of abstraction. The productive question is: *at what level of abstraction is the model operating, and where is the corresponding mechanism?* This paper proposes a methodology for adjudicating that question via convergence across independent lenses.
+### 1.1 Elevator pitch: 20 Questions
 
-Open with a worked example showing how the same Sally-Anne success can be consistent with multiple incompatible cognitive architectures (modular ToM module / abstract divergent-state primitive / pattern-matched narrative completion). Argue this is not a deflationary point but a methodological one.
+Two players. One picks an object — say, a tomato. The other tries to identify it in twenty yes/no questions. The asker updates a hypothesis space across turns. Both players are reasoning about what the other knows and what the other is trying to learn: the asker about the answerer's chosen object, the answerer about which questions narrow the asker's hypothesis space efficiently. That mutual epistemic modelling is the everyday face of Theory of Mind.
+
+Modern LLMs play 20 Questions tolerably well from either side. The interesting puzzle is not *whether* they can but *what computational structure underlies their success* — and an underappreciated complication is that 20 Questions itself is not a single game. The rules underdetermine play. An answerer who has chosen a tomato can be:
+
+- *Collaborative* — preferring informative answers, volunteering disambiguation when the literal yes/no would mislead (e.g. "botanically a fruit, but treated as a vegetable in cooking").
+- *Strictly correctness-oriented* — answering only the literal yes/no, no elaboration.
+- *Adversarial within the rules* — answering truthfully but exploiting concept-boundary ambiguity (to "is it a fruit?", answering "yes" when the asker is plausibly thinking of culinary categories).
+
+These are all "playing 20 Questions correctly". They produce different game trees. A model with genuine ToM-like computation should be sensitive to which subgame is being played; a pattern-matcher might default to one mode regardless of framing. This stance-sensitivity is itself a testable signature, and it returns in the experimental design (see § 5 and `stimuli/twenty-questions/`).
+
+### 1.2 The underdetermined question
+
+"Do LLMs have Theory of Mind?" conflates levels of abstraction. A model can succeed at Sally-Anne false-belief tasks, at 20 Questions, at narrative comprehension involving deception — without that success committing to *what* the model is doing computationally. The same Sally-Anne success is consistent with multiple incompatible cognitive architectures: a domain-specific psychological-ToM module; a substrate-independent abstract primitive for tracking divergent state; sophisticated cross-domain interpolation over training-distribution patterns; or narrative-completion pattern-matching. Behavioural success does not adjudicate between these.
+
+### 1.3 The productive question
+
+The productive question is: *at what level of abstraction is the model operating, and where is the corresponding mechanism?* This paper proposes a methodology for adjudicating that question via convergence across independent interpretability lenses. The contribution is methodological: a framework for distinguishing four candidate hypotheses about what the model is doing, anchored in tools (linear probing, activation patching, intrinsic-dimension estimation, persistent homology) that target the *computational locus* rather than the behavioural surface.
 
 ## 2. Related work and the gap
 
@@ -107,6 +123,16 @@ A remaining open call is whether to drop the topology lens from the primary anal
 - Compute scope: the full experiment requires resources beyond what we can pilot.
 - Stimulus naturalness: matched stimuli are artefactually constrained; real-world ToM is messier.
 - B1/B2 distinguishability may itself be model-scale-dependent.
+
+### Construct validity: from 20 Questions to single-turn matched-pair stimuli
+
+The paper opens with 20 Questions because it is the motivating phenomenon and a tractable elevator pitch. The experimental design then uses single-turn matched-pair stimuli (Sally-Anne false-belief, State-Rollback, combinatorially novel substrate) because the available mechanistic-interpretability tooling — probing, patching, intrinsic dimension, persistent homology — is designed for single-pass forward computation and does not natively handle multi-turn games.
+
+This is a methodological compromise. It strips out the very features 20 Questions was rich in: sequential interactional updating, mutual modelling of utility functions, strategic question-asking. The matched-pair design tests *necessary conditions* for a B1/B2 characterisation of 20 Questions behaviour, not sufficient ones. If the candidate circuit identified via the primary three conditions converges across all four lenses, that establishes the model has *some* divergent-state-tracking primitive. It does not directly establish that the same primitive is what does the work in 20 Questions gameplay.
+
+The 20 Questions-derived stimulus type (`stimuli/twenty-questions/`) is the validation bridge. If the candidate circuit also engages on 20Q-derived stimuli with stance-sensitivity in the theoretically expected direction, that is evidence the construct generalises from experimental design to motivating phenomenon. If not, that is itself an informative finding — the design tests something narrower than the original framing claims, and the paper should report so.
+
+The asymmetry between 20 Questions and the primary stimulus matrix should also be named directly. In 20 Questions the information asymmetry is *between players* — the questioner does not know the object the answerer has chosen. In Sally-Anne and the State-Rollback isomorph, the information asymmetry is *narrated* — the model has full access to all facts and is asked what a *character* with limited information would do. The transformation from "between players" to "between model and represented agent" is methodologically necessary for mech-interp purposes (we have access only to the model's residual stream) but is itself a non-trivial change to the construct. Interpretation of results should reflect this.
 
 ## 11. Conclusion
 

@@ -61,6 +61,18 @@ This correction was triggered by an external chat-instance review, not by self-r
 
 Added `.gitattributes` with `references.bib linguist-detectable=false` so the GitHub language bar reflects actual project content (markdown / Python) rather than reading "TeX 100%" off a single BibTeX file. Cosmetic only; does not affect repo behaviour.
 
+## 2026-05-02 — 20Q anchor and pragmatic-stance condition added
+
+Following discussion of construct validity — that the primary three-condition matrix tests *necessary* conditions for a B1/B2 characterisation of 20-Questions-style behaviour but not *sufficient* ones — added a 20Q-derived validation bridge to the design. Specifically:
+
+- **`paper/outline.md` § 1 restructured** with three subsections: (1.1) elevator-pitch opening on 20 Questions including the loss-function-multiplicity / stance observation, (1.2) the underdetermined question, (1.3) the productive question. The Sally-Anne worked example is now a brief mention in 1.2 rather than the section opener; the loss-function-ambiguity in 20 Questions is named as an experimental handle rather than a complication.
+- **`paper/outline.md` § 10** gained a "Construct validity: from 20 Questions to single-turn matched-pair stimuli" subsection naming the methodological compromise (mech-interp tooling does not natively handle multi-turn games), the asymmetry transformation (information asymmetry between players → between model and represented agent), and the role of the 20Q condition as a validation bridge.
+- **`stimuli/twenty-questions/spec.md`** drafted. Single-turn input (stance framing + transcript + probe question + scored output). Three stance variants — collaborative / strictly correctness-oriented / adversarial-within-rules — all consistent with playing 20 Questions correctly, producing different expected answer profiles. Probes representation of the answerer's *utility function* and pragmatic update; related but distinct primitive from divergent-state tracking.
+- **`stimuli/README.md`** updated to register the new condition. Explicit that 20Q is *not* part of the primary A/B/C-discriminating matrix; runs alongside as construct-validity check.
+- **`prereg/notes/p3-cross-bot-prompt.md`** gained **IA-ε: pragmatic-stance distance** as a fourth named candidate independent axis for the recursive OOD probe. If selected by the cross-bot review, the 20Q condition is promoted from validation-only to primary test bed for B1/B2 discrimination.
+
+Rationale per Jon: 20Q anchoring at the start of the paper does two things — provides a concrete elevator pitch that humans (with high cognitive scarcity) can latch onto from experience, and follows the recognisable lineage of game-anchored research while being honest that 20Q's loss function is itself contested across collaborative/strict/adversarial subgames. The subgame ambiguity is *not* a methodological problem; it is the experimental handle by which different cognitive architectures might be distinguished.
+
 ## 2026-05-02 — P4: discussion-section replies replaced with substantive arguments
 
 `paper/outline.md` § 9 had three slogan-thin replies to anticipated reviewer objections. The review (`REVIEW.md`) flagged this as the second-highest-leverage substantive issue after P1. Replaced each slogan with a substantive paragraph or two. Specifically:

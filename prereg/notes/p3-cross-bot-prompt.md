@@ -69,7 +69,8 @@ The **independent-axis (IA) space** — the dimension along which B1 and B2 dive
 - **IA-α.** *Compositional depth.* Test stimuli requiring 1, 2, 3, … nested or sequential compositions of the candidate primitive operation.
 - **IA-β.** *Distance from training distribution.* Stimuli at increasing semantic-embedding distance from the corpus subspace covered by the original conditions.
 - **IA-γ.** *Substrate distance.* Substrates at increasing remove from the trained ones (psychological → technical → cellular-automata-as-belief-systems → still further).
-- **IA-δ.** Some explicit combination of the above (e.g. depth crossed with substrate).
+- **IA-ε.** *Pragmatic-stance distance.* Hold the structural epistemic content constant; vary the framing of the represented agent's utility function. Concrete instance: a 20-Questions-derived setting where the answerer's stance is collaborative vs strictly literal vs adversarial-within-rules — all consistent with "playing the game correctly", but producing different game trees. Predicted divergence: a model with genuine ToM-like computation should be stance-sensitive in the theoretically expected direction (collaborative → more informative answers; strict → minimal answers; adversarial → exploiting concept-boundary ambiguity). A model in the interpolator regime should show smooth degradation of stance-sensitivity as stance moves further from the modal training distribution (typically collaborative-helpful in dialogue corpora).
+- **IA-δ.** Some explicit combination of the above (e.g. depth crossed with substrate, depth crossed with stance, etc.).
 - **IA-other.** Argue for an alternative.
 
 You may pick any DM and IA combination, or argue for using more than one axis.
