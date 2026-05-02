@@ -1,32 +1,48 @@
 % references.bib
 %
-% VERIFIED ENTRIES ONLY. Per CLAUDE.md and the project's working principles,
-% every entry below was checked via web search on 2 May 2026 and confirmed
-% to exist with the claims attributed to it. Re-verify before submission;
-% arXiv versions change.
+% VERIFICATION STANDARD
 %
-% For drafts in paper/, use placeholder syntax `[CITE: Author Year, claim]`
-% until the underlying paper is verified, then move the entry here.
+% Every entry below has been verified by:
+%   1. Fetching the canonical source (arXiv abstract page, OpenReview entry,
+%      or journal DOI page).
+%   2. Copying the author list, title, and year VERBATIM from that source —
+%      not rendered from memory, not paraphrased, not normalised across
+%      transliteration variants. Author lists from initials-only forms must
+%      be re-verified against the canonical full-name source.
+%   3. Recording the date of verification next to each entry's `verified`
+%      field.
 %
-% Citations identified as needed but NOT yet verified are listed as
-% TODO comments at the foot of this file.
+% Anything not yet verified to this standard does not appear here. Use
+%   [CITE: Author Year, claim]
+% placeholders in drafts until a citation is verified into this file.
+%
+% Re-verify before submission. arXiv versions and author orders can change.
+%
+% Failure mode this standard explicitly closes: rendering author names from
+% memory when the source gives only initials. See CHANGELOG.md entry for
+% 2026-05-02 ("citation discipline correction") for the worked example.
 
 @article{fay2025shape,
   title         = {The Shape of Adversarial Influence: Characterizing {LLM} Latent Spaces with Persistent Homology},
-  author        = {Fay, Andrew and Garc{\'i}a-Redondo, In{\'e}s and Wang, Qiang and Dubossarsky, Haim and Monod, Anthea},
+  author        = {Fay, Aideen and Garc{\'i}a-Redondo, In{\'e}s and Wang, Qiquan and Dubossarsky, Haim and Monod, Anthea},
   year          = {2025},
   eprint        = {2505.20435},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
+  verified      = {2026-05-02 against https://arxiv.org/abs/2505.20435},
   note          = {Coined ``topological compression'' terminology; methodology for PH on LLM activations. Note: their finding is specifically about adversarial-vs-clean signatures, not a general claim about middle-late layer compression as part of normal computation. Use carefully.}
 }
 
 @inproceedings{joshi2025geometry,
   title     = {Geometry of Decision Making in Language Models},
-  author    = {Joshi, [first names to verify]},
+  author    = {Joshi, Abhinav and Bhatt, Divyanshu and Modi, Ashutosh},
   year      = {2025},
-  booktitle = {OpenReview},
-  note      = {Across 28 open-weight transformers on MCQA, finds expand-then-compress ID pattern: early layers low-dimensional, middle layers expand, later layers compress to decision-relevant representations. Anchor for the operational-discretisation framing. TODO: confirm full author list and venue before submission.}
+  booktitle = {Advances in Neural Information Processing Systems (NeurIPS)},
+  eprint    = {2511.20315},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.CL},
+  verified  = {2026-05-02 against https://openreview.net/forum?id=Jj4NdJtXwp and https://arxiv.org/abs/2511.20315},
+  note      = {Across 28 open-weight transformers on MCQA, finds expand-then-compress ID pattern: early layers low-dimensional, middle layers expand, later layers compress to decision-relevant representations. Anchor for the operational-discretisation framing.}
 }
 
 @article{janapati2024comparative,
@@ -36,43 +52,47 @@
   eprint        = {2412.06245},
   archivePrefix = {arXiv},
   primaryClass  = {cs.CL},
+  verified      = {2026-05-02 against https://arxiv.org/abs/2412.06245},
   note          = {ID dynamics across layers in SFT vs ICL.}
 }
 
-@article{geometry2025tokens,
+@article{viswanathan2025geometry,
   title         = {The Geometry of Tokens in Internal Representations of Large Language Models},
-  author        = {[authors to verify]},
+  author        = {Viswanathan, Karthik and Gardinazzi, Yuri and Panerai, Giada and Cazzaniga, Alberto and Biagetti, Matteo},
   year          = {2025},
   eprint        = {2501.10573},
   archivePrefix = {arXiv},
   primaryClass  = {cs.CL},
-  note          = {ID peaks in early-to-middle layers; correlation with surprisal. TODO: confirm authors.}
+  verified      = {2026-05-02 against https://arxiv.org/abs/2501.10573},
+  note          = {ID peaks in early-to-middle layers; correlation with surprisal.}
 }
 
 @article{chen2025rethinking,
-  title         = {Rethinking the Shape Convention of an {MLP}},
-  author        = {Chen, Meng-Hao and Lee, Yi-An and Liao, Feng-Ting and Shiu, Da-shan},
+  title         = {Rethinking the shape convention of an {MLP}},
+  author        = {Chen, Meng-Hsi and Lee, Yu-Ang and Liao, Feng-Ting and Shiu, Da-shan},
   year          = {2025},
   eprint        = {2510.01796},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
+  verified      = {2026-05-02 against https://arxiv.org/abs/2510.01796},
   note          = {Hourglass (wide-narrow-wide) MLP architecture.}
 }
 
 @article{liao2026revisiting,
   title         = {Revisiting the Shape Convention of Transformer Language Models},
-  author        = {Liao, Feng-Ting and Chen, Meng-Hao and Yi, Guo-Tang and Shiu, Da-shan},
+  author        = {Liao, Feng-Ting and Chen, Meng-Hsi and Yi, Guan-Ting and Shiu, Da-shan},
   year          = {2026},
   eprint        = {2602.06471},
   archivePrefix = {arXiv},
   primaryClass  = {cs.LG},
+  verified      = {2026-05-02 against https://arxiv.org/abs/2602.06471},
   note          = {Transformer-specific application of hourglass FFNs.}
 }
 
 % =====================================================================
 % TODO — citations identified as needed but NOT YET VERIFIED.
 % Do not move into the verified section above without checking the actual
-% paper. Use [CITE: ...] placeholders in drafts until verified.
+% paper to the standard above. Use [CITE: ...] placeholders in drafts.
 % =====================================================================
 %
 % - Conmy et al. on automated circuit discovery (ACDC).
@@ -82,6 +102,3 @@
 % - Turpin et al. on chain-of-thought faithfulness.
 % - Nisbett & Wilson (1977) on confabulation.
 % - ToM-in-LLMs literature: Kosinski; Ullman.
-%
-% Author-name placeholders in entries above (Joshi et al., Geometry-of-Tokens)
-% must also be filled before submission.

@@ -35,6 +35,17 @@ Claims about prior work require verification. If you cite a paper, check it. If 
 
 When asked to "summarise the literature on X" — refuse to do so from memory. Run a search, read the abstracts at minimum, then write a summary you can defend line-by-line.
 
+### Author lists must be copied verbatim from the canonical source
+
+Before promoting any citation into `references.bib`, fetch the canonical source page (arXiv abstract, OpenReview entry, or journal DOI) and copy the author list verbatim. This means:
+
+- **Do not render full names from initials.** "Fay, A." in a handover or summary does not authorise writing "Andrew Fay" — the canonical source might say "Aideen Fay". When in doubt, fetch the abstract page.
+- **Do not normalise transliteration variants.** "Meng-Hao" and "Meng-Hsi" are different names. Copy whichever the source uses.
+- **Do not paraphrase or shorten.** Use the exact form on the canonical page (including diacritics, hyphenation, and middle initials).
+- **Record the verification.** Each verified entry in `references.bib` carries a `verified = {YYYY-MM-DD against <URL>}` field. If you cannot record one, the entry is not verified and does not belong in the file.
+
+This rule exists because the failure mode of approximating-plausible-names-from-memory is undetectable to the writer and silently violates the project's verification discipline. See `CHANGELOG.md` 2026-05-02 entry for the worked example that triggered this rule.
+
 ## How to challenge well
 
 The dialogue that produced this design worked because Claude and Gemini challenged each other on substance. To continue that:
