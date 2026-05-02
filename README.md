@@ -135,6 +135,11 @@ This analysis is suitable for the M4 Mac mini and is a prerequisite for the posi
 
 Per arXiv and standard journal policy, LLMs cannot be named authors. The paper's named author(s) will be Jon Minton and any human collaborators. Methodology and acknowledgement sections will document AI contribution honestly: the design emerged from dialogue between Claude 4.7 and Gemini, with Jon as arbiter. Code generation and drafting will continue with significant Claude Code involvement, again documented in acknowledgements. See [`CHANGELOG.md`](CHANGELOG.md) for a running provenance log.
 
-## Licence
+## Licences
 
-To be decided. (Suggest CC BY 4.0 for paper / prereg / stimuli; MIT or Apache-2.0 for implementation code. Apply before public sharing.)
+Dual-licensed by content type.
+
+- **Textual content** (Markdown files, prediction-matrix CSV, README, CHANGELOG, REVIEW) — [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE). Share and adapt with attribution to Jon Minton.
+- **Implementation code** (Python source under `implementation/`, plus any code that lands in `analysis/frequency_analysis/scripts/` or elsewhere) — [MIT License](implementation/LICENSE).
+
+When citing or building on this work, attribution to Jon Minton (and any future named collaborators) is requested. External use should preserve existing licence notices.

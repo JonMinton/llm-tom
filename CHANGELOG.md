@@ -61,6 +61,17 @@ This correction was triggered by an external chat-instance review, not by self-r
 
 Added `.gitattributes` with `references.bib linguist-detectable=false` so the GitHub language bar reflects actual project content (markdown / Python) rather than reading "TeX 100%" off a single BibTeX file. Cosmetic only; does not affect repo behaviour.
 
+## 2026-05-02 — P6: licences applied (CC BY 4.0 + MIT)
+
+Repository is now dual-licensed by content type:
+
+- **Textual content** (paper, prereg, stimuli, analysis docs, README, CHANGELOG, REVIEW, prediction-matrix CSV): CC BY 4.0. Top-level `LICENSE` carries the full legal code; copyright Jon Minton 2026.
+- **Implementation code** (Python source under `implementation/`, and any future code under `analysis/frequency_analysis/scripts/` or elsewhere): MIT. `implementation/LICENSE` carries the standard MIT text; copyright Jon Minton 2026.
+
+Files changed: top-level `LICENSE` added (CC BY 4.0 verbatim from creativecommons.org/licenses/by/4.0/legalcode.txt, with attribution preamble); `implementation/LICENSE` added (MIT verbatim from opensource.org/licenses/MIT, with Jon Minton 2026 substituted into the copyright line); `implementation/pyproject.toml` license field updated from `TBD` to `MIT`; README's "Licence — to be decided" block replaced with a "Licences" section pointing at both files.
+
+Verbatim-copy-from-canonical-source discipline applied to the licence texts as well as to bibliography entries.
+
 ## 2026-05-02 — 20Q anchor and pragmatic-stance condition added
 
 Following discussion of construct validity — that the primary three-condition matrix tests *necessary* conditions for a B1/B2 characterisation of 20-Questions-style behaviour but not *sufficient* ones — added a 20Q-derived validation bridge to the design. Specifically:
