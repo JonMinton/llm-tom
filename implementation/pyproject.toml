@@ -1,0 +1,43 @@
+[project]
+name = "llm-tom"
+version = "0.0.1"
+description = "Implementation template for adjudicating algorithmic Theory of Mind in LLMs."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "TBD" }
+authors = [{ name = "Jon Minton" }]
+
+dependencies = [
+    "transformer-lens>=2.0",
+    "torch>=2.2",
+    "numpy>=1.26",
+    "scikit-learn>=1.4",
+    "sentence-transformers>=2.7",
+    "gudhi>=3.9",
+    "scikit-dim>=0.5",
+    "tqdm>=4.66",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0",
+    "ruff>=0.4",
+    "mypy>=1.10",
+]
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "UP", "B", "SIM"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

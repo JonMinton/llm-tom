@@ -1,0 +1,75 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.python-version
+
+# Tools
+.ruff_cache/
+.mypy_cache/
+.pytest_cache/
+.tox/
+.coverage
+.coverage.*
+htmlcov/
+.cache
+
+# uv
+uv.lock
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Project-specific
+# Corpus data and embeddings — large, regenerable
+analysis/frequency_analysis/data/
+analysis/frequency_analysis/embeddings/
+analysis/frequency_analysis/results/
+
+# Model weights / activations — large, regenerable
+implementation/cache/
+implementation/checkpoints/
+implementation/activations/
+
+# Paper build artefacts
+paper/*.pdf
+paper/*.aux
+paper/*.log
+paper/*.out
+paper/*.bbl
+paper/*.blg
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints

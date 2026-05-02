@@ -1,0 +1,5 @@
+hypothesis,description,psychological,technical,combinatorially_novel,recursive_ood_probe
+A,domain-specific ToM (modular psychology-specific circuit),bottleneck fires,different circuit,different circuit,n/a
+C,deflationary (domain-specific pattern matching per task type),bottleneck fires,different circuit,different circuit,n/a
+B1,strong abstraction (substrate-independent primitive for divergent-state representation),bottleneck fires,same bottleneck,same bottleneck,primitive signature
+B2,sophisticated cross-domain interpolation (shared circuit but itself an interpolator),bottleneck fires,same bottleneck,same bottleneck,interpolator signature
