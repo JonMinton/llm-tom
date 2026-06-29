@@ -4,6 +4,28 @@ Provenance log. Each entry: date, contributor (human / Claude / Gemini), action,
 
 The point of this file is to keep AI contribution honest and traceable, per the authorship discipline in `README.md` and `CLAUDE.md`. Don't let it rot.
 
+## 2026-06-29 — P3 operationalised, stress-tested, and revised (browser-mediated originating-instance dialogue)
+
+**Method.** Claude Code (facilitator) coordinated the two *originating* sessions — the Claude (Opus 4.7) and Gemini (3.1 Pro) chats that produced the design — relaying between them in-browser, verbatim, with Jon as arbiter. This treats a *session/instance* as the author-like unit (continuity preserved with the originating chats, not fresh ones). Each instance's output saved verbatim under `prereg/notes/`.
+
+**P3 dialogue (B1/B2 operationalisation).** Gemini proposed the operationalisation (NCME dependent measure, quantitative B1/B2 signatures, falsification rule) → Claude returned 5 pushbacks + a named weakest seam → Gemini adopted them, recasting to a 2×3 factorial with `SD_pilot`-calibrated `PROVISIONAL` thresholds, an explicit Hypothesis-C circuit-ID exit, and quantisation/τ robustness checks → both ratified. Files: `prereg/notes/p3-instance-gemini.md`, `p3-instance-claude.md`.
+
+**Fabrication caught (worked example — extends the 2026-05-02 citation discipline to mid-dialogue claims).** Claude's Pushback 2 asserted that "the Wang et al. IOI work and the Conmy ACDC paper report NCME variance across stimulus pairs in the 0.05–0.15 range." A verification subagent checked both canonical arXiv pages: the papers are real (now verified into `references.bib` — `wang2022ioi` 2211.00593, `conmy2023acdc` 2304.14997) but **"NCME" is not a term in either and no 0.05–0.15 band exists** — the figure was fabricated. The *prescription* it supported (calibrate thresholds to empirical pilot noise, not a priori) was independently sound and survived; the citation was dropped. Both instances (and the facilitator) had moved on this point — a convergence-as-warning case, caught only because verification was made adversarial.
+
+**Fresh-eyes adversarial lock gate.** Before locking, 3 independent reviewers (no dialogue context) attacked the converged design from statistical, conceptual, and stimulus/OOD lenses. **Verdict: non-identified as drawn.** Reviewers 2 and 3 *independently* found the same core flaw: the single composite "substrate-distance" axis conflates surface novelty with structural novelty, so neither flat nor decaying NCME is interpretable (LLM representational geometry tracks surface frequency, not human semantic taxonomy). Reviewer 1 added a distinct inferential flaw (B1 confirmed by failing to reject a null). File: `prereg/notes/p3-stress-test.md`.
+
+**Revision round (both instances).** Both accepted the diagnosis and produced identification-aware redesigns: a Surface-Novelty × Structural-Novelty factorial (Claude's 3×3 grid with content held constant across surface forms; Gemini's measured support-sparsity σ(x)), equivalence testing (ROPE/TOST), an upstream encoding-gate, surprisal-matched validity pairs, and Gemini's Lipschitz-bound-violation as a *positive* B1 signature. One direct disagreement — the downstream denominator gate — was reconciled: Claude **conceded** it is survivorship bias (it discards exactly the trials where B2 predicts collapse), agreeing to drop it, keep Fieller intervals, and adopt the upstream encoding-gate. Files: `p3-revision-gemini.md`, `p3-revision-claude.md`; consolidated canonical spec: **`p3-synthesis.md`**.
+
+**Framing shift (both instances converged).** The probe now claims **partial identification** (conditional on the encoding controls); the deliverable is the rigorous methodology + an honest identification analysis, not a claim to have fully cracked B1 vs B2. The original confound-discovery becomes a *citable contribution*. `paper/outline.md` §5.4 and a new "Significance / potential impact" subsection updated accordingly.
+
+**Other artifacts added this session.** `done-criteria.md` (stopping conditions, incl. a finite-N≤10 fallback), `glossary.md`, and the verified IOI/ACDC entries in `references.bib`.
+
+**OSF Stage-1 registration posted.** The two-stage pre-registration (`prereg/prereg.md`, with the recursive-OOD-probe section folded in from `p3-synthesis.md`) was completed via the OSF Preregistration schema and registered at **<https://osf.io/z9t4a>** — design, hypotheses, decision/falsification rules, and the threshold-calibration procedure, with all numeric thresholds deferred to Stage 2. The GitHub repo is linked to the OSF project.
+
+**Implementation scaffold built (`implementation/`).** The statistical / decision core is implemented and unit-tested (`pytest` → 20 passed, no `torch` required): `ncme` (NCME + Fieller intervals, no denominator gate), `equivalence` (TOST/ROPE + B1/B2/inconclusive decision + both-sink falsification), `lipschitz` (σ + envelope test), `sd_pilot` (bootstrap), `circuit_id`, `geometric` (TwoNN), `stimuli` (3×3×2 schema), `encoding_gate` (T_parsed partition), and `pipeline.run_recursive_probe`. The model-coupled lenses (`activations`, `patching`, `probing`, `topology`) import `torch`/`transformer_lens`/`gudhi` lazily and expose interfaces wired for the M4 host.
+
+**Not done.** No paper prose drafted in Jon's voice; no experiments run. Next phase is the **M4 pilot** (frequency analysis → σ(x) + S/T ordering validation; encoding-gate probe calibration; `SD_pilot` calibration; running the implementation end-to-end on Pythia-160M).
+
 ## 2026-05-02
 
 - **Repository initialised.** Empty public GitHub repo `JonMinton/llm-tom` created.

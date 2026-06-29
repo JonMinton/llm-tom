@@ -1,6 +1,6 @@
 ---
-status: skeleton
-last_update: 2026-05-02
+status: scaffold built (decision core implemented + unit-tested; model-coupled lenses wired for the M4)
+last_update: 2026-06-29
 ---
 
 # Implementation template
@@ -24,7 +24,30 @@ End-to-end TransformerLens-based code intended to validate that the methodology 
 
 Dependency definitions live in `pyproject.toml`.
 
-## Layout (to be built)
+## What is implemented (2026-06-29)
+
+The **statistical / decision core** is implemented and unit-tested (`python -m pytest` → 20 passed; runs **without** `torch`):
+
+- `ncme.py` — NCME with **Fieller** intervals (honestly unbounded near a zero denominator; there is **no** survivorship-biasing denominator gate).
+- `equivalence.py` — **TOST/ROPE** equivalence test, the B1 / B2 / inconclusive decision rule, and the both-sink global falsification.
+- `lipschitz.py` — support sparsity σ(x) + the **Lipschitz-envelope** test (turns flat NCME into a positive B1 signature).
+- `sd_pilot.py` — bootstrap `SD_pilot` calibration.
+- `circuit_id.py` — Unified / Deflationary-disjoint / Inconclusive circuit-identification outcomes.
+- `geometric.py` — TwoNN intrinsic dimension; `stimuli.py` — the 3×3×2 (Surface × Structural × Validity) factorial schema; `encoding_gate.py` — the `T_parsed` / `T_unparsed` partition.
+- `pipeline.py` — `run_recursive_probe()` wires the decision core end-to-end (smoke-tested on synthetic logit differences).
+
+The **model-coupled lenses** (`activations.py`, `patching.py`, `probing.py`, `topology.py`) import `torch` / `transformer_lens` / `gudhi` **lazily** and expose the interfaces to be wired on the M4 pilot host (the patching hook loop raises `NotImplementedError` until then).
+
+All numeric thresholds live in `config.py` and are **PROVISIONAL**, pilot-calibrated per the Stage-1 pre-registration (<https://osf.io/z9t4a>).
+
+### Run the tests
+
+```
+cd implementation
+python -m pytest -q        # 20 passed; the decision core needs no torch
+```
+
+## Layout (built — see `src/llm_tom/`; P3 decision modules added alongside the four lenses)
 
 ```
 implementation/

@@ -4,6 +4,8 @@ A research-design project: methodology for adjudicating Level-2 algorithmic equi
 
 **Status:** design-proposal stage. No experiments have been run. This repository will host the position-paper draft, OSF pre-registration, stimuli, analysis plan, and an end-to-end implementation template intended to validate the methodology on a small model (Pythia-160M class).
 
+**OSF pre-registration (Stage 1):** <https://osf.io/z9t4a> — the design, hypotheses, decision/falsification rules, and the threshold-calibration *procedure*, registered 2026-06-29; numeric thresholds are deferred to a Stage-2 pilot registration. This GitHub repository is linked to the OSF project. The implementation scaffold (`implementation/`) is built and unit-tested.
+
 **Principal investigator:** Jon Minton (statistician, Edinburgh). M4 Mac mini available for pilot work and frequency analysis; full-scale experiment intended to be picked up by researchers with appropriate compute.
 
 ## Intended outputs

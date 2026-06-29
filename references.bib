@@ -89,14 +89,34 @@
   note          = {Transformer-specific application of hourglass FFNs.}
 }
 
+@article{wang2022ioi,
+  title         = {Interpretability in the Wild: a Circuit for Indirect Object Identification in {GPT-2} small},
+  author        = {Wang, Kevin and Variengien, Alexandre and Conmy, Arthur and Shlegeris, Buck and Steinhardt, Jacob},
+  year          = {2022},
+  eprint        = {2211.00593},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  verified      = {2026-06-29 against https://arxiv.org/abs/2211.00593},
+  note          = {The IOI circuit in GPT-2 small. Published ICLR 2023. Reports raw logit-difference (mean approx 3.55, SD approx 40% of mean) with a 2-sigma head-detection threshold. Does NOT report a 0.05--0.15 normalised-patching-variance band; a dialogue claim to that effect was fabricated (see CHANGELOG 2026-06-29).}
+}
+
+@article{conmy2023acdc,
+  title         = {Towards Automated Circuit Discovery for Mechanistic Interpretability},
+  author        = {Conmy, Arthur and Mavor-Parker, Augustine N. and Lynch, Aengus and Heimersheim, Stefan and Garriga-Alonso, Adri{\`a}},
+  year          = {2023},
+  eprint        = {2304.14997},
+  archivePrefix = {arXiv},
+  primaryClass  = {cs.LG},
+  verified      = {2026-06-29 against https://arxiv.org/abs/2304.14997},
+  note          = {ACDC automated circuit discovery. Published NeurIPS 2023 (Spotlight). Algorithm / edge-recovery ROC results; does NOT report per-stimulus-pair normalised patching variance.}
+}
+
 % =====================================================================
 % TODO — citations identified as needed but NOT YET VERIFIED.
 % Do not move into the verified section above without checking the actual
 % paper to the standard above. Use [CITE: ...] placeholders in drafts.
 % =====================================================================
 %
-% - Conmy et al. on automated circuit discovery (ACDC).
-% - IOI circuit analysis (Wang et al.).
 % - Bricken et al. on dictionary learning / sparse autoencoders.
 % - Elhage et al. on superposition.
 % - Turpin et al. on chain-of-thought faithfulness.

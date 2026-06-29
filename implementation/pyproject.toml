@@ -11,6 +11,7 @@ dependencies = [
     "transformer-lens>=2.0",
     "torch>=2.2",
     "numpy>=1.26",
+    "scipy>=1.11",
     "scikit-learn>=1.4",
     "sentence-transformers>=2.7",
     "gudhi>=3.9",
@@ -41,3 +42,4 @@ select = ["E", "F", "I", "N", "UP", "B", "SIM"]
 
 [tool.pytest.ini_options]
 testpaths = ["tests"]
+pythonpath = ["src"]
