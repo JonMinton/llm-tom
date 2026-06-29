@@ -62,6 +62,9 @@ implementation/cache/
 implementation/checkpoints/
 implementation/activations/
 
+# Pilot result artefacts — regenerable via pilot/m4_pilot.py
+implementation/pilot/results/
+
 # Paper build artefacts
 paper/*.pdf
 paper/*.aux

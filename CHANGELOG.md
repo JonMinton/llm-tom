@@ -4,6 +4,24 @@ Provenance log. Each entry: date, contributor (human / Claude / Gemini), action,
 
 The point of this file is to keep AI contribution honest and traceable, per the authorship discipline in `README.md` and `CLAUDE.md`. Don't let it rot.
 
+## 2026-06-29 — M4 pilot: `patching.py` wired + pipeline validated on Pythia-160m (Claude Code, supervised by Jon Minton)
+
+**Scope.** Pipeline validation only — *not* a scientific run, and no claim about whether Pythia-160m has ToM. No design or prereg files touched; every numeric value is PROVISIONAL and calibration-only (nothing committed to `config.py`). Full note: `implementation/pilot/m4-pilot-results.md`.
+
+**Wired `implementation/src/llm_tom/patching.py`** (was `raise NotImplementedError`) to the TransformerLens hook loop. `patched_logit_diffs(...)` does **denoising** patching (run corrupted, patch the clean activation in, measure recovery) — exactly the NCME quantity `(L_patched − L_corrupted)/(L_clean − L_corrupted)`. `component_effects(...)` returns the per-condition × per-component NCME matrix for `circuit_id`. Component specs cover `resid_post` / `attn_out` / `mlp_out` / single head `z`; a list patches a circuit jointly; `pos=-1` patches the prediction position. The 20 decision-core tests still pass unchanged (heavy stack stays lazily imported).
+
+**IOI validation (known-good circuit).** On 24 matched clean/corrupted IOI pairs (subject-swap corruption): `l_clean` +2.77 vs `l_corrupted` −4.90; **plumbing check** `resid_post[final]` @END NCME = **1.0000** (exact); `resid_post` layer sweep is flat through L5 then climbs L6 .23 → L9 .95 → L11 1.0 (the predicted mid-late compression zone); dominant name mover **L8H9 (+0.50)**. Patching the 6-head name-mover set jointly recovers NCME = **0.931** of the clean logit diff; an equal-size layer-0 control recovers **−0.001** — i.e. *patching the name-mover heads recovers the clean logit difference*, specifically.
+
+**`SD_pilot` calibration.** `sd_pilot.bootstrap_ncme_sd` on the name-mover circuit (1000 bootstraps, seed 0) → **SD_pilot = 0.0204** (deterministic; internally consistent with the between-pair NCME SD 0.109/√24 ≈ 0.022). PROVISIONAL — sets ROPE scale only; a Stage-2 calibration set must be larger.
+
+**Encoding-gate α calibration (known-good stimuli).** Same content in three surface forms (45 trials); early-layer [2,4] probe decodes surface with α mean **0.998** (min 0.996) → 45/45 `T_parsed`. Confirms the PROVISIONAL 0.95/0.90 thresholds are satisfiable on known-good stimuli (real-stimulus calibration still needed for the fail side).
+
+**End-to-end `pipeline.run_recursive_probe` on real activations.** Placeholder 3×3×2 factorial, real Pythia-160m activations → full `ProbeResult` without error (verdict `inconclusive`; **not** meaningful — degenerate placeholder stimuli). Confirms activations flow patching → NCME → SD_pilot → Fieller → TOST/Lipschitz/falsification deterministically.
+
+**Added.** `implementation/pilot/` (driver `m4_pilot.py`, `README.md`, `m4-pilot-results.md`); `.gitignore` entry for the regenerable `pilot/results/`.
+
+**Flagged seams (not smoothed).** `transformer-lens 3.5.0` installed vs the `>=2.0` floor in `pyproject.toml` (pin before a scientific run); patch-position choice for genuinely different surface forms is unresolved (`pos=None` needs length-aligned pairs); discovered name-mover indices are Pythia-160m-specific (the validated artefact is the method, not the indices).
+
 ## 2026-06-29 — P3 operationalised, stress-tested, and revised (browser-mediated originating-instance dialogue)
 
 **Method.** Claude Code (facilitator) coordinated the two *originating* sessions — the Claude (Opus 4.7) and Gemini (3.1 Pro) chats that produced the design — relaying between them in-browser, verbatim, with Jon as arbiter. This treats a *session/instance* as the author-like unit (continuity preserved with the originating chats, not fresh ones). Each instance's output saved verbatim under `prereg/notes/`.
