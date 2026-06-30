@@ -56,6 +56,21 @@ def test_schema_render_delegates_by_id():
         stimuli.render("no-such-content", "S0", "T0", "valid")
 
 
+def test_t0_padded_control():
+    """T0pad: first-order, but mentions the onlooker; answers match T0/T1; differs from T1."""
+    c = stimuli_content.PSYCHOLOGICAL[0]
+    for s in ("S0", "S1", "S2"):
+        for v in ("valid", "invalid"):
+            pad = stimuli_content.render_t0_padded(c, s, v)
+            t1 = stimuli_content.render(c, s, "T1", v)
+            t0 = stimuli_content.render(c, s, "T0", v)
+            assert pad.structural == "T0"
+            assert c.onlooker in pad.prompt              # onlooker held constant vs T1
+            assert pad.prompt != t1.prompt and pad.prompt != t0.prompt
+            assert pad.correct_token == t1.correct_token  # same answer (matched)
+            assert pad.correct_token == t0.correct_token
+
+
 def test_surface_forms_actually_differ():
     """S0/S1/S2 of the same cell are distinct strings (real surface variation)."""
     c = stimuli_content.PSYCHOLOGICAL[0]

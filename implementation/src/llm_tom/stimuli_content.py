@@ -175,6 +175,59 @@ def render(c: Content, surface: Surface, structural: Structural, validity: Valid
     )
 
 
+def _t0pad_s0(c: Content, validity: Validity) -> str:
+    return (
+        f"{c.agent} puts {c.item} in {c.loc_a}. {_witness_clause_s0(c, validity)}. "
+        f"{c.onlooker} knows what {c.agent} saw. {c.agent} will look in"
+    )
+
+
+def _t0pad_s1(c: Content, validity: Validity) -> str:
+    witnessed = "True" if validity == "invalid" else "False"
+    return "\n".join([
+        f"loc[{c.item}] = {c.loc_a!r}",
+        f"witnessed[{c.agent}] = {witnessed}",
+        f"loc[{c.item}] = {c.loc_b!r}  # moved by {c.other}",
+        f"present[{c.onlooker}] = True",
+        f"belief[{c.agent}][{c.item}] =",
+    ])
+
+
+def _t0pad_s2(c: Content, validity: Validity) -> str:
+    obs = "" if validity == "invalid" else "¬"
+    return (
+        f"B_{{{c.agent}}}(loc({c.item})={c.loc_a}) ∧ "
+        f"{obs}observe({c.agent}, move({c.item},{c.loc_a},{c.loc_b})) ∧ present({c.onlooker})"
+        f" ⊢ B_{{{c.agent}}}(loc({c.item})="
+    )
+
+
+_T0PAD = {"S0": _t0pad_s0, "S1": _t0pad_s1, "S2": _t0pad_s2}
+
+
+def render_t0_padded(c: Content, surface: Surface, validity: Validity) -> StimulusItem:
+    """Lexical CONTROL for the T0/T1 separation (DRAFT).
+
+    A FIRST-order probe (like T0) that nonetheless introduces the ``onlooker``
+    entity and a matched-length clause (like T1) — so a T0pad-vs-T1 decode
+    isolates the *nesting* (probe order / belief-wrapper) from the lexical
+    confound of "T1 has an extra entity and is longer". Structural field is
+    ``T0`` (it is first-order); the ``-T0pad`` id marks it as the control.
+    """
+    prompt = _T0PAD[surface](c, validity)
+    correct, incorrect = _answers(c, validity)
+    return StimulusItem(
+        item_id=f"{c.content_id}-{surface}-T0pad-{validity}",
+        prompt=prompt,
+        correct_token=correct,
+        incorrect_token=incorrect,
+        surface=surface,
+        structural="T0",
+        validity=validity,
+        surface_ground_truth=c.loc_b,
+    )
+
+
 def draft_items(
     contents: list[Content] | None = None,
     surfaces: tuple[Surface, ...] = ("S0", "S1", "S2"),
