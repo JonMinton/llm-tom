@@ -124,3 +124,36 @@ The faithful instrument answers the proxy's caveat 1: structure is **not** invis
 Open before any claim: the lexical-control test (seam 2) and the S2 weakness (seam
 1). Deeper T1 (spec: 4+ levels), the absolute σ(x)/locked corpus, and T2 remain
 deferred. Exploratory; nothing committed.
+
+---
+
+# Lexical control — seam 2 closed (`lexical_control_pilot.py`)
+
+To separate "nesting depth is structurally encoded" from "T1 is just longer / has an
+extra entity", a **T0-padded** control was added (`render_t0_padded`): a *first-order*
+probe that carries the *same* onlooker clause as T1, so T0pad and T1 differ only in
+the final clause (`"... Sarah will look in"` vs `"... Mia expects Sarah to look in"`).
+Per layer, within fixed surface, decode the original **unmatched** (T0 vs T1) beside
+the **matched** (T0pad vs T1). 144 items, Pythia-160m residual stream.
+
+| layer | unmatched (T0 vs T1) | matched (T0pad vs T1) | lexical share |
+|------:|:--------------------:|:---------------------:|:-------------:|
+| L2 | 0.962 | 0.952 | +0.02 |
+| **L4** | **0.981** | **0.981** | **+0.00** |
+| L6 | 0.868 | 0.867 | +0.00 |
+| L8 | 0.779 | 0.610 | +0.61 |
+| L11 | 0.627 | 0.460 | (below chance) |
+
+**Result: at the layers where T0/T1 separates best (L2–L6, peak L4 = 0.98), the
+matched decode equals the unmatched** — holding the onlooker entity and clause
+length constant removes *nothing*. So the early-mid separation is driven by the
+**epistemic nesting (probe order), not by length or entity-presence**. The lexical
+confound only contributes in *late* layers (L7+), where the decode is already weak.
+
+⇒ **Seam 2 closed:** Pythia-160m linearly represents epistemic nesting depth in
+early-mid layers (peak L4), genuinely — even at this DRAFT's T1 depth-2.
+
+Remaining: **seam 1 (S2 logical-notation weakness)** is largely a *late-layer*
+effect — at the peak layer L4 even S2 decodes ~0.94 — but warrants its own look.
+Depth-2 suffices for *detection*; whether 4+ nesting is needed for downstream B1/B2
+*discrimination* is a separate question. σ(x)/locked corpus and T2 stay deferred.
