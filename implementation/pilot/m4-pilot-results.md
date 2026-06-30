@@ -1,8 +1,8 @@
 ---
 status: pilot run — pipeline validation only (NOT a scientific result)
 model: pythia-160m
-host: Apple silicon (M-series), CPU, deterministic (seed 0)
-date: 2026-06-29
+host: first run on the laptop (Apple Silicon, CPU); independently reproduced on the butler M4 Mac mini (CPU) — identical results
+date: 2026-06-29 (laptop); reproduced 2026-06-30 (butler M4)
 thresholds: ALL PROVISIONAL — calibration values, not committed
 ---
 
@@ -16,6 +16,8 @@ about whether Pythia-160m has Theory of Mind. Every numeric value below is
 PROVISIONAL and calibration-only — none is committed to `config.py`.
 
 Reproduce: `cd implementation && python pilot/m4_pilot.py` (≈2–3 min, CPU).
+
+**Host confirmation (2026-06-30).** The first run executed on the laptop; the pilot was then **independently re-run on the butler — the actual M4 Mac mini** (Darwin arm64) — from a fresh `venv` (torch 2.12.1, transformer-lens 3.5.0). Every number below reproduced **exactly** (deterministic, seed 0), confirming the result on the intended host. The only difference was wall-clock: the butler's fresh venv ran torch on ~1 core (~41 min) versus the laptop's multi-core (~2–3 min) — a threading-config matter, not a result one. Set `OMP_NUM_THREADS` / `torch.set_num_threads` to the M4's cores before any heavier butler run.
 
 ## What was wired
 

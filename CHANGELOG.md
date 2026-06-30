@@ -22,6 +22,8 @@ The point of this file is to keep AI contribution honest and traceable, per the 
 
 **Flagged seams (not smoothed).** `transformer-lens 3.5.0` installed vs the `>=2.0` floor in `pyproject.toml` (pin before a scientific run); patch-position choice for genuinely different surface forms is unresolved (`pos=None` needs length-aligned pairs); discovered name-mover indices are Pythia-160m-specific (the validated artefact is the method, not the indices).
 
+**Reproduced on the butler M4 (2026-06-30).** The pilot was independently re-run on the butler — the actual M4 Mac mini — from a fresh venv; every number above reproduced **exactly** (deterministic). The original "M4 pilot" run had executed on the laptop; this confirms the result on the intended host. Wall-clock only differed (~41 min single-thread on the butler venv vs ~2–3 min multi-core on the laptop — set `OMP_NUM_THREADS` before heavier butler runs).
+
 ## 2026-06-29 — P3 operationalised, stress-tested, and revised (browser-mediated originating-instance dialogue)
 
 **Method.** Claude Code (facilitator) coordinated the two *originating* sessions — the Claude (Opus 4.7) and Gemini (3.1 Pro) chats that produced the design — relaying between them in-browser, verbatim, with Jon as arbiter. This treats a *session/instance* as the author-like unit (continuity preserved with the originating chats, not fresh ones). Each instance's output saved verbatim under `prereg/notes/`.
