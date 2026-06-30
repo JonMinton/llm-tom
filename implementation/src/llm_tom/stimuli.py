@@ -39,11 +39,16 @@ def factorial_grid_keys() -> list[tuple[Surface, Structural, Validity]]:
 def render(content_id: str, surface: Surface, structural: Structural, validity: Validity):
     """Render a fixed logical content into a (surface, structural, validity) cell.
 
-    Supplied by ``../../stimuli/`` once the matched sets are final; raises until then.
+    Delegates to the DRAFT content in ``stimuli_content`` (psychological + technical,
+    T0/T1 only; T2/novel deferred). Lazy import avoids a module cycle.
     """
-    raise NotImplementedError(
-        "Content rendering is provided by stimuli/ once the matched sets are finalised."
-    )
+    from .stimuli_content import ALL_CONTENTS
+    from .stimuli_content import render as _render
+
+    by_id = {c.content_id: c for c in ALL_CONTENTS}
+    if content_id not in by_id:
+        raise KeyError(f"unknown content_id {content_id!r}; have {sorted(by_id)}")
+    return _render(by_id[content_id], surface, structural, validity)
 
 
 def placeholder_items(n_per_cell: int = 1) -> list[StimulusItem]:
