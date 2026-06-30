@@ -75,3 +75,52 @@ But a null here is **suggestive, not decisive**, for two non-exclusive reasons:
   T2/combinatorially-novel form.
 
 All numbers exploratory; nothing committed to `config.py`.
+
+---
+
+# Follow-up: residual-stream instrument (`residual_separation_pilot.py`)
+
+The MiniLM null prompted the faithful re-test: the same separation metrics on
+**Pythia-160m's `resid_post` at the final token, per layer** — the space activation
+patching actually reads — instead of the semantic proxy. 96 items × 12 layers,
+~11 s on the idle butler (CPU), seed 0.
+
+## Result — the null flips
+
+T0-vs-T1 is **linearly separable within fixed surface in the residual stream**,
+where the semantic proxy saw nothing:
+
+| layer | Δ_T | surface decode | T0/T1 within-surface (mean; S0 / S1 / S2) |
+|------:|----:|:--------------:|:------------------------------------------|
+| L0 | 0.019 | 1.00 | 0.92 (1.00 / 1.00 / 0.77) |
+| **L4** | 0.134 | 1.00 | **0.98 (1.00 / 1.00 / 0.94)** ← peak |
+| L8 | 0.125 | 1.00 | 0.78 (1.00 / 0.94 / 0.40) |
+| L11 | 0.004 | 1.00 | 0.63 (0.77 / 0.77 / 0.34) |
+
+Surface decodes at **1.00 at every layer**; peak within-surface T decode **L4 = 0.98**.
+⇒ In the right instrument the **S×T decomposition is non-degenerate** even at this
+DRAFT's depth-2 T1 — **caveat 1 of the MiniLM null is confirmed** (proxy was wrong).
+
+## Two named seams (flagged, not smoothed)
+
+1. **S2 (logical notation) is the weak surface.** T decode is near-perfect within
+   S0 (narrative) and S1 (code-like) but ranges 0.34–0.94 within S2, collapsing in
+   late layers (L10–L11 ≈ 0.34). The model separates structure cleanly in narrative
+   and code, but **not reliably in belief-operator notation** — relevant to the
+   gate/surface controls and to whether S2 belongs as drawn.
+2. **Lexical confound on the T contrast.** T1 appends a clause (the second-order
+   "onlooker" layer), so the final-token residual differs partly because the
+   *contexts* differ lexically, not purely because nesting depth is *structurally*
+   encoded. Against a pure-lexical reading: the decode **peaks mid-layer (L4) then
+   declines**, and is **surface-dependent** (S2 weak) — neither of which a flat
+   lexical difference would produce. But a clean claim needs a **length/lexically
+   matched T-control** (a T0 with a structurally-irrelevant clause of matched
+   length). That is the next step to make this rigorous.
+
+## Net
+
+The faithful instrument answers the proxy's caveat 1: structure is **not** invisible
+— it is strongly present in early-mid layers (peak L4) for narrative/code surfaces.
+Open before any claim: the lexical-control test (seam 2) and the S2 weakness (seam
+1). Deeper T1 (spec: 4+ levels), the absolute σ(x)/locked corpus, and T2 remain
+deferred. Exploratory; nothing committed.
